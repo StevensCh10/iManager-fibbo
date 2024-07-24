@@ -45,7 +45,7 @@ public class AuthController {
         }
     }
 
-    @PostMapping()
+    @PostMapping("/register")
     @ResponseStatus(HttpStatus.OK)
     public User addUser(@Valid @RequestBody User newUser){
         return userService.addUser(newUser);
