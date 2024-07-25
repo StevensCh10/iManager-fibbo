@@ -5,6 +5,8 @@ const api = axios.create({
     baseURL: "http://localhost:8080/"
 })
 
+const authToken = localStorage.getItem("authToken");
+
 export const useApi = () => ({
     validateToken: async (token: string) => {
         const response = await api.post('auth/validate', { token });
@@ -20,5 +22,14 @@ export const useApi = () => ({
         return await api.post(`auth/register`, newUser)
             .then((response) => response.data)
             .catch((e) => {throw e.response.data});
+    },
+    updateUser: async(updatedUser: User) => {
+        return await api.put('/user', updatedUser, {
+            headers: {
+                Authorization: `Beare ${authToken}`
+            }
+        })
+        .then((response) => response.data)
+        .catch((e) => {throw e.response.data})
     }
 })

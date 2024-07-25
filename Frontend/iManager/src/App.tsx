@@ -4,6 +4,7 @@ import { RequiredAuth } from './contexts/auth/RequiredAuth'
 import Login from './pages/Login/Login'
 import Home from './pages/Home/Home'
 import Register from './pages/Register/Register'
+import Profile from './pages/Profile/Profile'
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/home' element={<RequiredAuth><Home/></RequiredAuth>}/>
+        <Route path='/profile' element={<RequiredAuth><Profile/></RequiredAuth>}/>
       </Routes>
     </div>
   )

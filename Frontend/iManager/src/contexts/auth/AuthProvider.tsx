@@ -44,8 +44,19 @@ export const AuthProvider = ({ children }: {children: JSX.Element}) => {
         return data;
     }
 
+    const signout = () => {
+        localStorage.clear();
+        setUser(null);
+    }
+
+    const updateUser = async(updatedUser: User) => {
+        const data = await api.updateUser(updatedUser);
+        setUser(data);
+        localStorage.setItem('user', JSON.stringify(data));
+    }
+
     return (
-        <AuthContext.Provider value={{user, signin, register}}>
+        <AuthContext.Provider value={{user, signin, register, signout, updateUser}}>
             {children}
         </AuthContext.Provider>
     );
