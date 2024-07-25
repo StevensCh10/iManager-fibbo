@@ -2,7 +2,7 @@ import axios from "axios";
 import { User } from "../types/User";
 
 const api = axios.create({
-    baseURL: "https://localhost:8080/"
+    baseURL: "http://localhost:8080/"
 })
 
 export const useApi = () => ({

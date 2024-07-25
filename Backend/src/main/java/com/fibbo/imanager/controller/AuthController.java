@@ -29,7 +29,7 @@ public class AuthController {
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
     public ResponseDTO authenticateUser(@Valid @RequestBody RequestDTO loginRequest) {
-        ResponseDTO response = authService.authenticate(loginRequest.email(), loginRequest.email());
+        ResponseDTO response = authService.authenticate(loginRequest.email(), loginRequest.password());
         return response;
     }
 
