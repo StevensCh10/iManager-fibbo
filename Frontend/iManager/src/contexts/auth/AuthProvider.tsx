@@ -35,8 +35,17 @@ export const AuthProvider = ({ children }: {children: JSX.Element}) => {
         return false;
     }
 
+    const register = async(newUser: User) => {
+        const data = await api.register(newUser);
+        if(data){
+            setUser(data);
+            localStorage.setItem('user', JSON.stringify(data)); 
+        }
+        return data;
+    }
+
     return (
-        <AuthContext.Provider value={{user, signin}}>
+        <AuthContext.Provider value={{user, signin, register}}>
             {children}
         </AuthContext.Provider>
     );

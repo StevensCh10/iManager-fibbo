@@ -1,0 +1,79 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ff9500;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 90.3vh;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;;
+}
+
+.register-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 340px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 3% 1.5% 3% 1.5%;
+}
+
+.register-form {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: start;
+  width: 100%;
+}
+
+.register-content span {
+    font-size: 35px;
+  margin-bottom: 10%;
+  color: #ff9500;
+}
+
+.register-form label {
+    width: 69%;
+    margin-bottom: 1%;
+    font-size: 18px;
+    opacity: 0.85;
+}
+
+.register-form input {
+    width: 70%;
+  padding: 10px;
+  box-sizing: border-box;
+  margin-bottom: 1%;
+  border-radius: 5px;
+  border: 1px solid rgba(179, 51, 51, 0.031);
+  background-color: rgba(0, 0, 0, 0.082);
+  font-size: 16px;
+}
+
+.register-form input:focus {
+    outline: none;
+    border-color: rgb(26, 55, 68);
+  }
+
+.register-form button {
+    background-color: white;
+    border-radius: 5px;
+    width: 70%;
+    color: #ff9500;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border: 1px solid #ff9500;
+    font-size: 17px;
+}
+
+.register-form button:hover {
+    background-color: #ff9500;
+    color: white;
+}
