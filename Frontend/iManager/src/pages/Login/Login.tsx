@@ -3,6 +3,7 @@ import { AuthContext } from "../../contexts/auth/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorType } from "../../types/ErrorType";
 import "./Login.css"
+import Footer from "../../components/Footer/Footer";
 
 const Login = () => {
     const auth = useContext(AuthContext);
@@ -64,6 +65,7 @@ const Login = () => {
           </p>
 
         </div>
+        <Footer color="white"/>
       </div>
     );
   };

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 import { User } from "../../types/User";
 import { useApi } from "../../hooks/useApi";
+import { Product } from "../../types/Product";
 
 export const AuthProvider = ({ children }: {children: JSX.Element}) => {
     const [user, setUser] = useState<User |  null>(() => {
@@ -55,8 +56,31 @@ export const AuthProvider = ({ children }: {children: JSX.Element}) => {
         localStorage.setItem('user', JSON.stringify(data));
     }
 
+    const productsByUser = async(userID: number) => {
+        const data = await api.productsByUser(userID);
+        localStorage.setItem('products', JSON.stringify(data));
+        return data;
+    }
+
+    const addProduct = async(newProduct: Product) => {
+        const data = await api.addProduct(newProduct);
+        const products = JSON.parse(localStorage.getItem('products')!);
+        products.push(data);
+        localStorage.setItem('products', JSON.stringify(products));
+    }
+
+    const updateProduct = async(updatedProduct: Product) => {
+        await api.updateProduct(updatedProduct);
+        await productsByUser(updatedProduct.user.id!);
+    }
+
+    const deleteProduct = async(product: Product) => {
+        await api.deleteProduct(product.id!);
+        await productsByUser(product.user.id!);
+    }
+
     return (
-        <AuthContext.Provider value={{user, signin, register, signout, updateUser}}>
+        <AuthContext.Provider value={{user, signin, register, signout, updateUser, productsByUser, addProduct, updateProduct, deleteProduct}}>
             {children}
         </AuthContext.Provider>
     );

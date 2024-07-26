@@ -1,8 +1,10 @@
+import { User } from "./User";
+
 export type Product = {
-    id: number;
+    id?: number;
     name: string;
     description: string;
     code: string;
-    user: number;
+    user: User;
     price: number;
 }

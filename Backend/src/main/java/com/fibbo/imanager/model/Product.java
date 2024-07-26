@@ -1,6 +1,10 @@
 package com.fibbo.imanager.model;
 
 import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,6 +36,9 @@ public class Product implements Serializable{
     @JoinColumn(unique = true, updatable = false)
     private String code;
 
+    @JsonIgnoreProperties(value = {"name", "email", "password"}, allowGetters = true)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     @ManyToOne
     @JoinColumn(name = "fk_user")
     private User user;

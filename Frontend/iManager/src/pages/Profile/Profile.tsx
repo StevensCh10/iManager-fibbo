@@ -3,6 +3,7 @@ import "./Profile.css";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 import { User } from "../../types/User";
 import Navbar from "../../components/Navbar/Navbar";
+import Footer from "../../components/Footer/Footer";
 
 const Profile = () => {
   const auth = useContext(AuthContext);
@@ -45,6 +46,7 @@ const Profile = () => {
           <button type="submit">Salvar</button>
         </form>
       </div>
+      <Footer color="#ff9500"/>
     </div>
   );
 };

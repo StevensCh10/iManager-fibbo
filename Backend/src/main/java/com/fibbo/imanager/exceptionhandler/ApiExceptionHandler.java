@@ -125,7 +125,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler{
 	}
 	
 	@Override
-	protected ResponseEntity<Object> handleExceptionInternal(@NonNull Exception ex, @SuppressWarnings("null") Object body, @NonNull HttpHeaders headers,
+	protected ResponseEntity<Object> handleExceptionInternal(@NonNull Exception ex, Object body, @NonNull HttpHeaders headers,
 		@NonNull HttpStatusCode status, @NonNull WebRequest request) {
 		
 		if(body == null) {

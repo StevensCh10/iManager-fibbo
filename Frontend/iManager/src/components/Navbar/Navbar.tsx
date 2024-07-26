@@ -17,9 +17,8 @@ const Navbar = () => {
           <Link to="/">iManager</Link>
         </div>
         <div className="right">
-          <Link to="/">Adicionar Produto</Link>
+          <Link to="/add-product">Adicionar Produto</Link>
           <Link to="/home">Produtos</Link>
-          <Link to="/">Categorias</Link>
           <Link to="/profile">Perfil</Link>
           <Link to="/" onClick={handleLogout}>Sair</Link>
         </div>

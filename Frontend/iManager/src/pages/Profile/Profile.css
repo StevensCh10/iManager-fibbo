@@ -8,11 +8,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center; /* Centralizar vertical e horizontalmente */
-  min-height: 80vh; /* Ajuste a altura conforme necessário */
+  min-height: 83vh; /* Ajuste a altura conforme necessário */
 }
 
 .profile-content img {
-  width: 8%;
+  width: 140px;
   object-fit: cover;
   margin-bottom: 3%;
 }

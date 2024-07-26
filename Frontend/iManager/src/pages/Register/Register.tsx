@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/auth/AuthContext";
 import { ErrorType } from "../../types/ErrorType";
 import { User } from "../../types/User";
 import "./Register.css";
+import Footer from "../../components/Footer/Footer";
 
 const Register = () => {
   const auth = useContext(AuthContext);
@@ -76,6 +77,7 @@ const Register = () => {
           </p>
         </form>
       </div>
+      <Footer color="white"/>
     </div>
   );
 };
