@@ -5,7 +5,6 @@ import { ErrorType } from "../../types/ErrorType";
 import "./AddProduct.css";
 import Navbar from "../../components/Navbar/Navbar";
 import { Product } from "../../types/Product";
-import { User } from "../../types/User";
 import Footer from "../../components/Footer/Footer";
 
 const AddProduct = () => {
