@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { Product } from "../../types/Product";
 import "./Card.css"
 import { AuthContext } from "../../contexts/auth/AuthContext";
-import { User } from "../../types/User";
 import { ErrorType } from "../../types/ErrorType";
 
 interface CardProps {

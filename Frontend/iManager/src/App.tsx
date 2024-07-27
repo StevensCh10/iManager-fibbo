@@ -5,7 +5,6 @@ import Login from './pages/Login/Login'
 import Home from './pages/Home/Home'
 import Register from './pages/Register/Register'
 import Profile from './pages/Profile/Profile'
-import Footer from './components/Footer/Footer'
 import AddProduct from './pages/AddProduct/AddProduct'
 
 const App = () => {

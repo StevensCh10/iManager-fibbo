@@ -1,8 +1,8 @@
 package com.fibbo.imanager.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
-
 import com.fibbo.imanager.exception.EntityAlreadyExists;
 import com.fibbo.imanager.exception.EntityNotFound;
 import com.fibbo.imanager.model.Product;
@@ -42,6 +42,10 @@ public class ProductService {
     }
 
     public List<Product> allProductByUser(Long userID){
-        return repo.findAllByUser(userID);
+        List<Product> results = repo.findAllByUser(userID);
+        if (results == null) {
+            results = new ArrayList<>(); // Ou qualquer outra inicialização adequada
+        }   
+        return results;
     }
 }

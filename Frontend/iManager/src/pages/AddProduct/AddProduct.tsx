@@ -11,7 +11,6 @@ import Footer from "../../components/Footer/Footer";
 const AddProduct = () => {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
-  const userID: User = { id: auth.user!.id! };
 
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
@@ -26,7 +25,9 @@ const AddProduct = () => {
           name: name,
           description: description,
           code: code,
-          user: userID,
+          user: {
+            id: auth.user!.id! as number
+          },
           price: price
         }
         auth.addProduct(product);

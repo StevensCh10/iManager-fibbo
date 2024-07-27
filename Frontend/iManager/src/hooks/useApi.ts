@@ -1,6 +1,5 @@
 import axios from "axios";
 import { User } from "../types/User";
-import AddProduct from "../pages/AddProduct/AddProduct";
 import { Product } from "../types/Product";
 
 const api = axios.create({

@@ -38,11 +38,12 @@ export const AuthProvider = ({ children }: {children: JSX.Element}) => {
 
     const register = async(newUser: User) => {
         const data = await api.register(newUser);
-        if(data){
+        if(data.user && data.token){
             setUser(data);
-            localStorage.setItem('user', JSON.stringify(data)); 
+            localStorage.setItem('user', JSON.stringify(data.user));
+            localStorage.setItem('authToken', data.token);
         }
-        return data;
+        return data.user;
     }
 
     const signout = () => {
