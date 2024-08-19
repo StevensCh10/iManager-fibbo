@@ -29,8 +29,7 @@ const AddProduct = () => {
           },
           price: price
         }
-        auth.addProduct(product);
-        navigate("/");
+        auth.addProduct(product).then(() => navigate("/"));
       } catch (error) {
         alert((error as ErrorType).detail);
       }

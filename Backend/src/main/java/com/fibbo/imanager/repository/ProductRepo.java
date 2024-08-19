@@ -11,7 +11,7 @@ public interface ProductRepo extends JpaRepository<Product, Long>{
     Product findByCode(String code);
     
     @Query(
-        value = "SELECT * FROM Product WHERE fk_user = :userID" + "",
+        value = "SELECT * FROM product WHERE fk_user = :userID" + "",
         nativeQuery = true
     )
     List<Product> findAllByUser(@Param("userID") Long userID);

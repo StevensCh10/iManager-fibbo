@@ -68,6 +68,7 @@ export const AuthProvider = ({ children }: {children: JSX.Element}) => {
         const products = JSON.parse(localStorage.getItem('products')!);
         products.push(data);
         localStorage.setItem('products', JSON.stringify(products));
+        return data;
     }
 
     const updateProduct = async(updatedProduct: Product) => {

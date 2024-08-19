@@ -7,6 +7,7 @@ const api = axios.create({
 })
 
 const authToken = localStorage.getItem("authToken");
+if(authToken) console.log("")
 
 export const useApi = () => ({
     validateToken: async (token: string) => {
@@ -42,7 +43,7 @@ export const useApi = () => ({
         .then((response) => response.data)
     },
     addProduct: async(newProduct: Product) => {
-        await api.post(`/product`, newProduct, {
+        return await api.post(`/product`, newProduct, {
             headers: {
                 Authorization: `Bearer ${authToken}`
             }

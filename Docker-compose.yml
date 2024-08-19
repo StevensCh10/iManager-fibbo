@@ -1,0 +1,25 @@
+services:
+  frontend:
+    build:
+      context: ./Frontend/iManager
+    ports:
+      - "3000:80"  # Mapeia a porta 80 do contêiner para a porta 3000 do host
+
+  backend:
+    build:
+      context: ./Backend
+    ports:
+      - "8080:8080"  # Mapeia a porta 8080 do contêiner para a porta 8080 do host
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/imanagerdb
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=root
+      - api.security.token.secret="my-secret-token"
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: imanagerdb
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"

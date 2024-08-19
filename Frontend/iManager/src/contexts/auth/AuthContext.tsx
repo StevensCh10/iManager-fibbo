@@ -9,7 +9,7 @@ export type AuthContextType = {
     signout: () => void;
     updateUser: (updatedUser: User) => void;
     productsByUser: (userID: number) => Promise<Product[]>;
-    addProduct: (newProduct: Product) => void;
+    addProduct: (newProduct: Product) => Promise<Product>;
     updateProduct: (updatedProduct: Product) => void;
     deleteProduct: (product: Product) => void;
 }
