@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
-import "./Home.css"
 import { Product } from "../../types/Product";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -26,18 +25,21 @@ const Home = () => {
       }, []);
 
     return (
-      <div className="home-container">
+      <div className="flex flex-col items-center">
         <Navbar/>
-        <div className="home-content">
+        <div className="flex flex-wrap items-center justify-center w-full min-h-[85vh] mb-6">
             {products.length === 0 ? (
-                <div className="noProd">
+                <div className="flex flex-col text-[1.4em] items-center text-[#ff9500]">
                     <label>Você não tem nenhum produto adicionado</label>
-                    <button onClick={(() => navigate("/add-product"))}>Adicionar</button>
+                    <button 
+                      className="rounded-md w-[30%] text-[#ff9500] p-[10px] cursor-pointer border border-[#ff9500] mt-[3%] hover:bg-[#ff9500] hover:text-white"
+                      onClick={(() => navigate("/add-product"))}>
+                        Adicionar
+                    </button>
                 </div>
             ) : (
-                <div className="withProd">
+                <div className="flex flex-wrap items-center justify-center w-full">
                     {products.map((prod, index) => (
-                      
                       <Card key={index} product={prod}/>
                     ))}
                 </div>

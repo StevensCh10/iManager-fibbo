@@ -15,6 +15,9 @@ const Card: React.FC<CardProps> = ({product}) => {
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState<number>(product.price);
 
+  const pStyle = "text-[#333] my-2 ml-4";
+  const inputStyle = "border-none text-base";
+
   const handleUpdated = () => {
     try {
       const productAux: Product = {
@@ -37,23 +40,27 @@ const Card: React.FC<CardProps> = ({product}) => {
   
   const handleDelete = () => {
     auth.deleteProduct(product);
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
 
   return (
-    <div className="border border-[#ff9500] rounded-lg p-4 m-4 flex flex-col box-border">
-      <h3 className="m-0 mb-[15%] text-center text-[#b86b00] w-full h-[35px]">
+    <div className="border border-[#ff9500] rounded-lg p-4 my-4 mx-4 flex flex-col box-border">
+      <h3 className="m-0 mb-[8%] text-center text-[#b86b00] text-lg w-full h-[35px]">
         {name}
       </h3>
       <form>
-        <p className="m-0 text-[#333] my-2 ml-4">
-          Código: <input readOnly onChange={(e) => setCode(e.target.value)} value={code} className="border-none text-base w-1/2" />
+        <p className={pStyle}>
+          Código: <input readOnly onChange={(e) => setCode(e.target.value)} value={code} className={inputStyle} />
         </p>
-        <p className="m-0 text-[#333] my-2 ml-4">
-          Descrição: <input onChange={(e) => setDescription(e.target.value)} value={description} className="border-none text-base w-1/2" />
+        <p className={pStyle}>
+          Descrição: <input onChange={(e) => setDescription(e.target.value)} value={description} className={inputStyle} />
         </p>
-        <p className="m-0 text-[#333] my-2 ml-4">
-          Preço: R$<input
+        <p className={pStyle}>
+          Preço: R$
+          <input
+            className={inputStyle}
             type="number"
             value={price}
             onChange={(e) => {
@@ -62,7 +69,6 @@ const Card: React.FC<CardProps> = ({product}) => {
                 setPrice(newValue);
               }
             }}
-            className="border-none text-base w-1/2"
           />
         </p>
       </form>

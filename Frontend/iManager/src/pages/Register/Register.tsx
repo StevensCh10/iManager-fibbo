@@ -13,6 +13,9 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const labelStyle = "w-[70%] mb-[1%] text-[1em] opacity-85";
+    const inputStyle = "box-border w-[70%] p-[10px] mb-[6%] rounded-sm bg-[#00000015] text-[1em] focus:outline-none ";
+
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -33,13 +36,13 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <div className="register-content">
-        <span>Cadastre-se</span>
-        <form onSubmit={handleRegister} className="register-form">
-          <label htmlFor="name">Nome</label>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-[#ff9500]">
+      <div className="flex flex-col items-center w-[340px] bg-white rounded-md py-[3%] px-[1.5%]">
+        <span className="text-[1.7em] mb-[10%] text-[#ff9500]">Cadastre-se</span>
+        <form className="flex flex-col items-center justify-center w-full" onSubmit={handleRegister}>
+          <label className={labelStyle} htmlFor="name">Nome</label>
           <input
-            style={{ marginBottom: "5%" }}
+            className={inputStyle}
             placeholder="Nome completo"
             type="text"
             id="name"
@@ -49,9 +52,9 @@ const Register = () => {
             required
           />
 
-          <label htmlFor="email">Email</label>
+          <label className={labelStyle} htmlFor="email">Email</label>
           <input
-            style={{ marginBottom: "5%" }}
+            className={inputStyle}
             placeholder="Email"
             type="email"
             id="email"
@@ -60,9 +63,9 @@ const Register = () => {
             required
           />
 
-          <label htmlFor="password">Senha</label>
+          <label className={labelStyle} htmlFor="password">Senha</label>
           <input
-            style={{ marginBottom: "10%" }}
+            className={inputStyle}
             placeholder="Senha"
             type="password"
             id="password"
@@ -71,9 +74,12 @@ const Register = () => {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <button type="submit">Cadastrar</button>
-          <p className="signup-link" style={{ marginBottom: "1.7%" }}>
-            Já tem uma conta? <Link to="/login">Conecte-se</Link>
+          <button
+            className="rounded-sm mt-[5%] text-[#ff9500] p-[10px] cursor-pointer text-[1em] w-[70%] border
+               border-[#ff9500] text-[1em] hover:bg-[#ff9500] hover:text-white"
+            type="submit">Cadastrar</button>
+          <p className="mt-[3%] opacity-75">
+            Já tem uma conta? <Link className="text-[#b86b00] hover:text-[#ff9500cb]" to="/login">Conecte-se</Link>
           </p>
         </form>
       </div>

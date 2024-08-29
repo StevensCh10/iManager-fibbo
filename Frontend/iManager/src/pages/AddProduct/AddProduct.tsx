@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { ErrorType } from "../../types/ErrorType";
-import "./AddProduct.css";
 import Navbar from "../../components/Navbar/Navbar";
 import { Product } from "../../types/Product";
 import Footer from "../../components/Footer/Footer";
@@ -39,13 +38,13 @@ const AddProduct = () => {
   return (
     <>
       <Navbar />
-      <div className="addProd-container">
-        <div className="addProd-content">
-          <span>Novo Produto</span>
-          <form onSubmit={handleAddProduct} className="addProd-form">
-            <label>Nome</label>
+      <div className="flex flex-col justify-center items-center  min-h-[89.5vh] md: min-h-[95vh], lg: min-h-screen ">
+        <div className="flex flex-col items-center bg-white rounded-lg border border-[#ff9500] py-[3%] mb-[3%] w-[260px] md:w-[340px]">
+          <span className="text-2xl mb-[10%] text-[#ff9500]">Novo Produto</span>
+          <form onSubmit={handleAddProduct} className="flex flex-col items-center text-start w-full">
+            <label className="w-[69%] mb-[1%] text-base opacity-85">Nome</label>
             <input
-              style={{ marginBottom: "6%" }}
+              className="w-[70%] p-1 box-border mb-[6%] rounded-[5px] border border-[#b3333308] bg-[#00000015] focus:outline-none"
               placeholder="Nome do produto"
               type="text"
               id="name"
@@ -54,9 +53,9 @@ const AddProduct = () => {
               required
             />
 
-            <label>Código</label>
+            <label className="w-[69%] mb-[1%] text-base opacity-85">Código</label>
             <input
-              style={{ marginBottom: "6%" }}
+              className="w-[70%] p-1 box-border mb-[6%] rounded-[5px] border border-[#b3333308] bg-[#00000015] focus:outline-none"
               placeholder="Código do produto"
               type="text"
               id="code"
@@ -65,9 +64,9 @@ const AddProduct = () => {
               required
             />
 
-            <label>Preço</label>
+            <label className="w-[69%] mb-[1%] text-base opacity-85">Preço</label>
             <input
-              style={{ marginBottom: "6%" }}
+              className="w-[70%] p-1 box-border mb-[6%] rounded-[5px] border border-[#b3333308] bg-[#00000015] focus:outline-none"
               placeholder="Preço do produto"
               type="number"
               id="code"
@@ -76,10 +75,14 @@ const AddProduct = () => {
               required
             />
 
-            <label>Descrição</label>
-            <textarea placeholder="Descreva seu produto..." onChange={((e) => setDescription(e.target.value))}></textarea>
+            <label className="w-[69%] mb-[1%] text-base opacity-85">Descrição</label>
+            <textarea
+              className="p-[2%] text-base w-[70%] h-24 mb-[12%] rounded-[5px] border border-[#b3333308] bg-[#00000015] focus:outline-none" 
+              placeholder="Descreva seu produto..." onChange={((e) => setDescription(e.target.value))}></textarea>
 
-            <button type="submit">Adicionar</button>
+            <button
+              className="bg-white rounded-[5px] w-[70%] text-[#ff9500] p-[10px] border border-[#ff9500] hover:bg-[#ff9500] hover:text-white"
+              type="submit">Adicionar</button>
           </form>
         </div>
       </div>

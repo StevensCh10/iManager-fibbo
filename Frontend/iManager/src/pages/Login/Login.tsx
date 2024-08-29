@@ -2,7 +2,6 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { ErrorType } from "../../types/ErrorType";
-import "./Login.css"
 import Footer from "../../components/Footer/Footer";
 
 const Login = () => {
@@ -11,6 +10,9 @@ const Login = () => {
   
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const labelStyle = "w-[70%] mb-[1%] text-[1em] opacity-85";
+    const inputStyle = "box-border w-[70%] p-[10px] mb-[6%] rounded-sm bg-[#00000015] text-[1em] focus:outline-none ";
   
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -27,15 +29,13 @@ const Login = () => {
     };
   
     return (
-      <div className="login-container">
-        <div className="login-content">
-          <div className="logo-container">
-            <h1 className="logo-text">iManager</h1>
-          </div>
-          <form onSubmit={handleLogin} className="login-form">
-            <label>Email</label>
+      <div className="flex flex-col items-center justify-center h-screen bg-[#ff9500] ">
+        <div className="flex flex-col items-center bg-white rounded-md py-[3%] px-[1.5%] w-[340px]">
+          <h1 className="text-[#ff9500] text-[3.8em] font-dancing mb-[3%]">iManager</h1>
+          <form className="flex flex-col items-center text-start w-full" onSubmit={handleLogin}>
+            <label className={labelStyle}>Email</label>
             <input
-              style={{marginBottom: "6%"}}
+              className={inputStyle}
               placeholder="Email"
               type="email"
               id="email"
@@ -44,9 +44,9 @@ const Login = () => {
               required
             />
   
-            <label>Senha</label>
+            <label className={labelStyle}>Senha</label>
             <input
-              style={{marginBottom: "12%"}}
+              className={inputStyle}
               placeholder="Senha"
               type="password"
               id="password"
@@ -55,13 +55,17 @@ const Login = () => {
               required
             />
   
-            <button type="submit">
-              Entrar
+            <button
+              className="rounded-sm mt-[5%] text-[#ff9500] p-[10px] cursor-pointer text-[1em] w-[70%] border
+               border-[#ff9500] text-[1em] hover:bg-[#ff9500] hover:text-white" 
+              type="submit"
+              >
+                Entrar
             </button>
           </form>
   
-          <p className="signup-link">
-            Não tem uma conta? <Link to="/register">Cadastre-se</Link>
+          <p className="mt-[3%] opacity-75">
+            Não tem uma conta? <Link className="text-[#b86b00] hover:text-[#ff9500cb]" to="/register">Cadastre-se</Link>
           </p>
 
         </div>

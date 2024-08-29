@@ -6,8 +6,15 @@ const api = axios.create({
     baseURL: "http://localhost:8080/"
 })
 
-const authToken = localStorage.getItem("authToken");
-if(authToken) console.log("")
+api.interceptors.request.use((config) => {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+}, (error) => {
+    return Promise.reject(error);
+});
 
 export const useApi = () => ({
     validateToken: async (token: string) => {
@@ -26,47 +33,27 @@ export const useApi = () => ({
             .catch((e) => {throw e.response.data});
     },
     updateUser: async(updatedUser: User) => {
-        return await api.put('/user', updatedUser, {
-            headers: {
-                Authorization: `Bearer ${authToken}`
-            }
-        })
+        return await api.put('/user', updatedUser)
         .then((response) => response.data)
         .catch((e) => {throw e.response.data})
     },
     productsByUser: async(userID: number) => {
-        return await api.get(`/product/products/${userID}`, {
-            headers: {
-                Authorization: `Bearer ${authToken}`
-            }
-        })
+        return await api.get(`/product/products/${userID}`)
         .then((response) => response.data)
     },
     addProduct: async(newProduct: Product) => {
-        return await api.post(`/product`, newProduct, {
-            headers: {
-                Authorization: `Bearer ${authToken}`
-            }
-        })
+        return await api.post(`/product`, newProduct)
         .then((response) => response.data)
         .catch((e) => {throw e.response.data})
     },
     updateProduct: async(updatedProduct: Product) => {
         console.log(updatedProduct)
-        return await api.put('/product', updatedProduct, {
-            headers: {
-                Authorization: `Bearer ${authToken}`
-            }
-        })
+        return await api.put('/product', updatedProduct)
         .then((response) => response.data)
         
     },
     deleteProduct: async(productID: number) => {
-        await api.delete(`/product/${productID}`, {
-            headers: {
-                Authorization: `Bearer ${authToken}`
-            }
-        })
+        await api.delete(`/product/${productID}`)
         .catch((e) => {throw e.response.data})
     }
 })

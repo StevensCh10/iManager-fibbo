@@ -6,6 +6,7 @@ const Navbar = () => {
   const auth = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [btnActivated, setBtnActivated] = useState(false);
 
   const handleLogout = (e: any) => {
     e.preventDefault();
@@ -57,10 +58,10 @@ const Navbar = () => {
 
       {isModalOpen && (
         <div className="fixed inset-0 flex items-center justify-end mr-4 z-50">
-          <div className="bg-white text-[#ff9500] p-6 rounded-lg shadow-lg sm:w-1/5 md:w-1/5 absolute top-12">
+          <div className="bg-white text-[#ff9500] p-6 rounded-lg shadow-lg absolute top-12 w-[45%] md:w-[23%] ">
             <button onClick={toggleModal} className="float-right text-black font-bold">&times;</button>
             <div className="mt-4">
-              <Link to="/add-product" className="block hover:opacity-75 mb-2">Adicionar Produto</Link>
+              <Link to="/add-product" className="block hover:opacity-75 mb-2 mt-8">Adicionar Produto</Link>
               <Link to="/home" className="block hover:opacity-75 mb-2">Produtos</Link>
               <Link to="/profile" className="block hover:opacity-75 mb-2">Perfil</Link>
               <Link to="/" onClick={handleLogout} className="block hover:opacity-75 mb-2">Sair</Link>

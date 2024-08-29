@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import "./Profile.css";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 import { User } from "../../types/User";
 import Navbar from "../../components/Navbar/Navbar";
@@ -10,6 +9,8 @@ const Profile = () => {
   const user: User = auth.user!;
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
+  const inputStyle = "text-center w-[70%] p-[10px] box-border mb-[4%] rounded-sm bg-[#00000015] text-[1em] focus:outline-none";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,22 +29,26 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-container">
+    <div>
       <Navbar/>
-      <div className="profile-content">
-        <img src="usuario-de-perfil.png" alt="Foto do usuário" />
-        <form onSubmit={handleAtt} className="profile-form">
-          <div className="profile-info">
-            <input type="name" id="name" name="name" value={name} readOnly />
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <img className="w-[180px] mb-[3%]" src="usuario-de-perfil.png" alt="Foto do usuário" />
+        <form className="text-center" onSubmit={handleAtt}>
             <input
+              className={inputStyle} 
+              type="name" id="name" name="name" value={name} readOnly />
+            <input
+              className={inputStyle}
               id="email"
               name="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </div>
-          <button type="submit">Salvar</button>
+          <button
+            className="rounded-sm w-[70%] text-[#ff9500] p-[10px] cursor-pointer border border-[#ff9500] text-[1em] mt-[7%]
+             hover:bg-[#ff9500] hover:text-white"
+            type="submit">Salvar</button>
         </form>
       </div>
       <Footer color="#ff9500"/>
