@@ -18,7 +18,7 @@ const Home = () => {
             setProducts(resultProducts);
 
           } catch (error) {
-;
+            
           }
         };
         fetchData();
@@ -30,7 +30,7 @@ const Home = () => {
         <div className="flex flex-wrap items-center justify-center w-full min-h-[85vh] mb-6">
             {products.length === 0 ? (
                 <div className="flex flex-col text-[1.4em] items-center text-[#ff9500]">
-                    <label>Você não tem nenhum produto adicionado</label>
+                    <label className="text-center">Você não tem nenhum produto adicionado</label>
                     <button 
                       className="rounded-md w-[30%] text-[#ff9500] p-[10px] cursor-pointer border border-[#ff9500] mt-[3%] hover:bg-[#ff9500] hover:text-white"
                       onClick={(() => navigate("/add-product"))}>

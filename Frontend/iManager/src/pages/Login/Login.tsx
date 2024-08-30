@@ -30,7 +30,7 @@ const Login = () => {
   
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-[#ff9500] ">
-        <div className="flex flex-col items-center bg-white rounded-md py-[3%] px-[1.5%] w-[340px]">
+        <div className="flex flex-col items-center bg-white rounded-md py-[3%] px-[1.5%] w-[270px] md:w-[340px] md:py-[3%] md:px-[1.5%]">
           <h1 className="text-[#ff9500] text-[3.8em] font-dancing mb-[3%]">iManager</h1>
           <form className="flex flex-col items-center text-start w-full" onSubmit={handleLogin}>
             <label className={labelStyle}>Email</label>
@@ -64,12 +64,14 @@ const Login = () => {
             </button>
           </form>
   
-          <p className="mt-[3%] opacity-75">
+          <p className="mt-[3%] opacity-75 text-sm mb-[4%] md:mb-0 md:text-base">
             Não tem uma conta? <Link className="text-[#b86b00] hover:text-[#ff9500cb]" to="/register">Cadastre-se</Link>
           </p>
 
         </div>
-        <Footer color="white"/>
+        <div className="absolute bottom-0">
+          <Footer color="white"/>
+        </div>
       </div>
     );
   };

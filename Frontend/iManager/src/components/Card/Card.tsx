@@ -30,7 +30,6 @@ const Card: React.FC<CardProps> = ({product}) => {
         },
         price: price
       }
-      console.log(price)
       auth.updateProduct(productAux);
       window.location.reload();
     } catch (error) {

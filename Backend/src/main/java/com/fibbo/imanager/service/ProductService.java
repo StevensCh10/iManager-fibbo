@@ -44,7 +44,7 @@ public class ProductService {
     public List<Product> allProductByUser(Long userID){
         List<Product> results = repo.findAllByUser(userID);
         if (results == null) {
-            results = new ArrayList<>(); // Ou qualquer outra inicialização adequada
+            results = new ArrayList<>();
         }   
         return results;
     }

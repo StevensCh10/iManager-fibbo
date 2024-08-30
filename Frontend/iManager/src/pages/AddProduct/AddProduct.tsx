@@ -40,7 +40,7 @@ const AddProduct = () => {
       <Navbar />
       <div className="flex flex-col justify-center items-center  min-h-[89.5vh] md: min-h-[95vh], lg: min-h-screen ">
         <div className="flex flex-col items-center bg-white rounded-lg border border-[#ff9500] py-[3%] mb-[3%] w-[260px] md:w-[340px]">
-          <span className="text-2xl mb-[10%] text-[#ff9500]">Novo Produto</span>
+          <span className="text-4xl mb-[10%] text-[#ff9500] font-dancing">Novo Produto</span>
           <form onSubmit={handleAddProduct} className="flex flex-col items-center text-start w-full">
             <label className="w-[69%] mb-[1%] text-base opacity-85">Nome</label>
             <input
@@ -61,6 +61,9 @@ const AddProduct = () => {
               id="code"
               name="code"
               onChange={(e) => setCode(e.target.value)}
+              pattern="\d{6}"
+              maxLength={6}
+              minLength={6} 
               required
             />
 
