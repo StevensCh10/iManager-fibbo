@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fibbo.imanager.dto.UpdatePasswordRequest;
 import com.fibbo.imanager.model.User;
 import com.fibbo.imanager.service.UserService;
 import jakarta.validation.Valid;
@@ -27,6 +29,15 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public User updateUser(@Valid @RequestBody User updatedUser){
         return service.updateUser(updatedUser);
+    }
+    
+    @PutMapping("/password")
+    @ResponseStatus(HttpStatus.OK)
+    public User updatePassword(@Valid @RequestBody UpdatePasswordRequest data){
+        User user = data.user();
+        String oldPassword = data.oldPassword();
+        String newPassword = data.newPassword();
+        return service.updatePassword(user, oldPassword, newPassword);
     }
 
     @GetMapping("/{userID}")

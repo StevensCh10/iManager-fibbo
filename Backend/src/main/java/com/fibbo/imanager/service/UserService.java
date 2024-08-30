@@ -4,6 +4,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.fibbo.imanager.dto.ResponseDTO;
+import com.fibbo.imanager.exception.CurrentPassword;
 import com.fibbo.imanager.exception.EntityAlreadyExists;
 import com.fibbo.imanager.exception.EntityNotFound;
 import com.fibbo.imanager.model.User;
@@ -41,6 +42,20 @@ public class UserService {
             return repo.saveAndFlush(userUpdated);
         }
         throw new EntityAlreadyExists(String.format("Usuário com email %s já está cadastrado", userUpdated.getEmail()));
+    }
+
+    public User updatePassword(User user, String oldPassword, String newPassword){
+        if(passwordEncoder.matches(oldPassword, user.getPassword())){
+            if(oldPassword.equals(newPassword)){
+                throw new CurrentPassword("Sua nova senha já é a atual");
+            }else{
+                user.setPassword(passwordEncoder.encode(newPassword));
+                repo.saveAndFlush(user);
+                return user;
+            }
+        }else{
+            throw new EntityNotFound("Senha atual inválida");
+        }
     }
 
     public void deleteUser(Long id){

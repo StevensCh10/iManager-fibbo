@@ -11,6 +11,7 @@ export type AuthContextType = {
     productsByUser: (userID: number) => Promise<Product[]>;
     addProduct: (newProduct: Product) => Promise<Product>;
     updateProduct: (updatedProduct: Product) => void;
+    updatePassword: (user: User, oldPassword: String, newPassword: String) => Promise<User>;
     deleteProduct: (product: Product) => void;
 }
 

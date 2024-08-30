@@ -3,29 +3,23 @@ import { AuthContext } from "../../contexts/auth/AuthContext";
 import { User } from "../../types/User";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const auth = useContext(AuthContext);
   const user: User = auth.user!;
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const name = user?.name;
+  const email = user?.email;
 
   const inputStyle = "text-center w-[70%] p-[10px] box-border mb-[4%] rounded-sm bg-[#00000015] text-[1em] focus:outline-none";
-
-  useEffect(() => {
-    const fetchData = async () => {
-        setName(user!.name!);
-        setEmail(user!.email!);
-    };
-    fetchData();
-  }, [auth]);
 
   const handleAtt = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    user!.email = email;
     auth.updateUser(user!);
-    window.location.reload();
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   return (
@@ -42,9 +36,11 @@ const Profile = () => {
               id="email"
               name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              readOnly
             />
+          <p className="mt-[3%] opacity-75 text-sm mb-[4%] md:mb-0 md:text-base">
+            <Link className="text-[#b86b00] hover:text-[#ff9500cb]" to="/change-password">Alterar senha</Link>
+          </p>
           <button
             className="rounded-sm w-[70%] text-[#ff9500] p-[10px] cursor-pointer border border-[#ff9500] text-[1em] mt-[7%]
              hover:bg-[#ff9500] hover:text-white"

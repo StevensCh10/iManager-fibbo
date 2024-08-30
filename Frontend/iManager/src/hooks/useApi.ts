@@ -37,6 +37,16 @@ export const useApi = () => ({
         .then((response) => response.data)
         .catch((e) => {throw e.response.data})
     },
+    updatePassword: async(updatedUser: User, oldPassword:String, newPassword: String) => {
+        var data = {
+            user: updatedUser,
+            oldPassword: oldPassword,
+            newPassword: newPassword
+        }
+        return await api.put('/user/password', data)
+        .then((response) => response.data)
+        .catch((e) => {throw e.response.data})
+    },
     productsByUser: async(userID: number) => {
         return await api.get(`/product/products/${userID}`)
         .then((response) => response.data)

@@ -57,6 +57,13 @@ export const AuthProvider = ({ children }: {children: JSX.Element}) => {
         localStorage.setItem('user', JSON.stringify(data));
     }
 
+    const updatePassword = async(updatedUser: User, oldPassword: String, newPassword: String) => {
+        const data = await api.updatePassword(updatedUser, oldPassword, newPassword);
+        setUser(data);
+        localStorage.setItem('user', JSON.stringify(data));
+        return data;
+    }
+
     const productsByUser = async(userID: number) => {
         const data = await api.productsByUser(userID);
         localStorage.setItem('products', JSON.stringify(data));
@@ -82,7 +89,7 @@ export const AuthProvider = ({ children }: {children: JSX.Element}) => {
     }
 
     return (
-        <AuthContext.Provider value={{user, signin, register, signout, updateUser, productsByUser, addProduct, updateProduct, deleteProduct}}>
+        <AuthContext.Provider value={{user, signin, register, signout, updateUser, productsByUser, addProduct, updateProduct, deleteProduct, updatePassword}}>
             {children}
         </AuthContext.Provider>
     );

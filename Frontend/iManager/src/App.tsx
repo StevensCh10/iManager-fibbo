@@ -6,6 +6,7 @@ import Home from './pages/Home/Home'
 import Register from './pages/Register/Register'
 import Profile from './pages/Profile/Profile'
 import AddProduct from './pages/AddProduct/AddProduct'
+import ChangePassword from './pages/changePassword/ChangePassword'
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
         <Route path='/register' element={<Register/>}/>
         <Route path='/home' element={<RequiredAuth><Home/></RequiredAuth>}/>
         <Route path='/profile' element={<RequiredAuth><Profile/></RequiredAuth>}/>
+        <Route path='/change-password' element={<RequiredAuth><ChangePassword/></RequiredAuth>}/>
         <Route path='/add-product' element={<RequiredAuth><AddProduct/></RequiredAuth>}/>
       </Routes>
     </div>
