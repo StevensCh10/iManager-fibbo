@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../contexts/auth/AuthContext";
 import { User } from "../../types/User";
 import Navbar from "../../components/Navbar/Navbar";
